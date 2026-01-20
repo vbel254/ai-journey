@@ -46,6 +46,8 @@ print(long_texts)  # [67, 120, 89, 55]
 def create_dataset_config(**kwargs):
     kwargs["created"] = "2026-01-19"  # просто добавляем ключ
     return kwargs
+
+
 # def create_dataset_config(**kwargs):
 #     return kwargs | {"created": "2026-01-19"}
 
