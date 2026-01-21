@@ -20,7 +20,7 @@ from collections import Counter
 # sentences = [
 #     "Machine learning is amazing",
 #     "Deep learning is a subset of machine learning",
-#     "Machine learning is amazing", 
+#     "Machine learning is amazing",
 #     "AI and machine learning are the future",
 #     "Deep learning uses neural networks",
 #     "Machine, learning is powerful"
@@ -31,6 +31,7 @@ sentence = input("Введите предложение: ")
 # stopwords = {"is", "a", "of", "the", "and", "are"}
 stopwords = {}
 
+
 def process_text(sentence, stopwords):
     # sentences_unique = set(sentences)
     # filtered_words = []
@@ -38,14 +39,18 @@ def process_text(sentence, stopwords):
     #     tokens = sentence.lower().translate(str.maketrans('', '', string.punctuation)).split()
     #     filtered_words.extend([word for word in tokens if word not in stopwords])
     punctuation_without_hyphen = string.punctuation.replace('-', '')
-    words = sentence.lower().translate(str.maketrans('', '', punctuation_without_hyphen)).split()
+    words = (
+        sentence.lower()
+        .translate(str.maketrans('', '', punctuation_without_hyphen))
+        .split()
+    )
     filtered_words = [word for word in words if word not in stopwords]
     word_count = Counter(filtered_words)
     top_5 = word_count.most_common(5)
     return top_5
 
+
 result = process_text(sentence, stopwords)
 print("Топ-5 самых частых слов:")
 for word, count in result:
     print(f"{word}: {count}")
-
